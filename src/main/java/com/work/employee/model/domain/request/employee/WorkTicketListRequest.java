@@ -18,6 +18,8 @@ public class WorkTicketListRequest implements Serializable {
 
     private long pageSize;
 
+    private Integer approvalStatus;
+
     /**
      * 部门编号
      */

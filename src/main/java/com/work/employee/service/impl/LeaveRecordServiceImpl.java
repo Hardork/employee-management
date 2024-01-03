@@ -42,9 +42,13 @@ public class LeaveRecordServiceImpl extends ServiceImpl<LeaveRecordMapper, Leave
         long pageNo = leaveRecordListRequest.getPageNo();
         long pageSize = leaveRecordListRequest.getPageSize();
         String employeeNo = leaveRecordListRequest.getEmployeeNo();
+        Integer status = leaveRecordListRequest.getStatus();
 
         if (!StringUtils.isEmpty(employeeNo)) {
             EmployeeQueryWrapper.eq("employeeID", Long.parseLong(employeeNo));
+        }
+        if (status != null) {
+            EmployeeQueryWrapper.eq("status",leaveRecordListRequest.getStatus());
         }
 
         //去数据库获取分页数据

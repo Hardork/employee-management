@@ -18,6 +18,8 @@ public class LeaveRecordListRequest implements Serializable {
 
     private long pageSize;
 
+    private Integer status;
+
     /**
      * 部门编号
      */

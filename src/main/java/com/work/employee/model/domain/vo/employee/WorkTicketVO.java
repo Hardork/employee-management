@@ -18,5 +18,5 @@ public class WorkTicketVO {
     private String ttName;
     private Date startDate;
     private Date endDate;
-    private Boolean approvalStatus;
+    private Integer approvalStatus;
 }
