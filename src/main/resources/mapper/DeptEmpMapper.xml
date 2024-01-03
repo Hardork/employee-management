@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.work.employee.mapper.DeptEmpMapper">
+
+    <resultMap id="BaseResultMap" type="com.work.employee.model.domain.entity.DeptEmp">
+            <id property="deID" column="deID" jdbcType="BIGINT"/>
+            <result property="employeeID" column="employeeID" jdbcType="BIGINT"/>
+            <result property="deptID" column="deptID" jdbcType="BIGINT"/>
+            <result property="fromDate" column="fromDate" jdbcType="DATE"/>
+            <result property="toDate" column="toDate" jdbcType="DATE"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        deID,employeeID,deptID,
+        fromDate,toDate
+    </sql>
+</mapper>

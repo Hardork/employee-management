@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.work.employee.mapper.EmployeeMapper">
+
+    <resultMap id="BaseResultMap" type="com.work.employee.model.domain.entity.Employee">
+            <id property="employeeID" column="employeeID" jdbcType="BIGINT"/>
+            <result property="employeeName" column="employeeName" jdbcType="VARCHAR"/>
+            <result property="address" column="address" jdbcType="VARCHAR"/>
+            <result property="phone" column="phone" jdbcType="VARCHAR"/>
+            <result property="email" column="email" jdbcType="VARCHAR"/>
+            <result property="birthday" column="birthday" jdbcType="DATE"/>
+            <result property="employeeIntroduction" column="employeeIntroduction" jdbcType="VARCHAR"/>
+            <result property="baseSalary" column="baseSalary" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        employeeID,employeeName,address,
+        phone,email,birthday,
+        employeeIntroduction,baseSalary
+    </sql>
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.work.employee.mapper.EquipmentBorrowMapper">
+
+    <select id="getEquipmentList"
+            resultType="com.work.employee.model.domain.vo.equipment_borrow.EquipmentBorrowVo">
+        select borrowID,eb.equipmentNo equipmentNo,borrowPersonnelNo,
+               equipmentName,borrowPersonnelNo,eb.leftNum,eb.`status`,reason,borrowDate,specifiedDate
+        from equipment_borrow eb left join equipment e on eb.equipmentNo = e.equipmentNo
+        where eb.borrowPersonnelNo = #{borrowPersonnelNo}
+        order by eb.borrowDate desc
+            limit #{start},#{end}
+    </select>
+    <select id="getEquipmentPartList"
+            resultType="com.work.employee.model.domain.vo.equipment_borrow.EquipmentBorrowVo">
+        select borrowID,eb.equipmentNo equipmentNo,borrowPersonnelNo,
+               equipmentName,borrowPersonnelNo,eb.leftNum,eb.`status`,reason,borrowDate,specifiedDate
+        from equipment_borrow eb left join equipment e on eb.equipmentNo = e.equipmentNo
+        where eb.`status` = #{obj.status}
+        <if test="obj.equipmentNo != null and obj.equipmentNo != ''">
+            and eb.equipmentNo = #{obj.equipmentNo}
+        </if>
+        <if test="obj.borrowPersonnelNo != null and obj.borrowPersonnelNo != ''">
+            and eb.borrowPersonnelNo = #{obj.borrowPersonnelNo}
+        </if>
+        <if test="obj.equipmentName != null and obj.equipmentName != ''">
+            and e.equipmentName = #{obj.equipmentName}
+        </if>
+        order by eb.createTime desc
+            limit #{start},#{end}
+    </select>
+    <select id="getPartListByLoginUser"
+            resultType="com.work.employee.model.domain.vo.equipment_borrow.EquipmentBorrowVo">
+        select borrowID,eb.equipmentNo equipmentNo,borrowPersonnelNo,
+               equipmentName,borrowPersonnelNo,eb.leftNum,eb.`status`,reason,borrowDate,specifiedDate
+        from equipment_borrow eb left join equipment e on eb.equipmentNo = e.equipmentNo
+        where eb.`status` = #{status} and eb.borrowPersonnelNo = #{borrowPersonnelNo}
+        order by eb.createTime desc
+            limit #{start},#{end}
+    </select>
+</mapper>

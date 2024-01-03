@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.work.employee.mapper.WorkTicketMapper">
+
+    <resultMap id="BaseResultMap" type="com.work.employee.model.domain.entity.WorkTicket">
+            <id property="wtID" column="wtID" jdbcType="BIGINT"/>
+            <result property="approvalStatus" column="approvalStatus" jdbcType="TINYINT"/>
+            <result property="employeeID" column="employeeID" jdbcType="BIGINT"/>
+            <result property="ttID" column="ttID" jdbcType="BIGINT"/>
+            <result property="startDate" column="startDate" jdbcType="DATE"/>
+            <result property="endDate" column="endDate" jdbcType="DATE"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        wtID,approvalStatus,employeeID,
+        ttID,startDate,endDate
+    </sql>
+</mapper>

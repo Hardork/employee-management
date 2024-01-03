@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.work.employee.mapper.LeaveRecordMapper">
+
+    <resultMap id="BaseResultMap" type="com.work.employee.model.domain.entity.LeaveRecord">
+            <id property="leaveID" column="leaveID" jdbcType="BIGINT"/>
+            <result property="employeeID" column="employeeID" jdbcType="BIGINT"/>
+            <result property="leaveType" column="leaveType" jdbcType="TINYINT"/>
+            <result property="leaveReason" column="leaveReason" jdbcType="VARCHAR"/>
+            <result property="startTime" column="startTime" jdbcType="TIMESTAMP"/>
+            <result property="endTime" column="endTime" jdbcType="TIMESTAMP"/>
+            <result property="status" column="status" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        leaveID,employeeID,leaveType,
+        leaveReason,startTime,endTime,
+        status
+    </sql>
+</mapper>
