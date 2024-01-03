@@ -1,5 +1,6 @@
 package com.work.employee.model.domain.vo.employee;
 
+import com.work.employee.model.domain.entity.LeaveRecord;
 import lombok.Data;
 
 import java.util.List;
@@ -15,5 +16,5 @@ public class LeaveRecordListVO {
     private long pageSize;
     private long totalCount;
     private long totalPage;
-    private List<LeaveRecordVO> data;
+    private List<LeaveRecord> data;
 }

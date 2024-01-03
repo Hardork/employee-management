@@ -13,7 +13,6 @@ import com.work.employee.model.domain.entity.EquipmentBorrow;
 import com.work.employee.model.domain.entity.User;
 import com.work.employee.model.domain.request.*;
 import com.work.employee.model.domain.vo.UserListVo;
-import com.work.employee.service.EquipmentBorrowService;
 import com.work.employee.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -36,8 +35,6 @@ public class UserController {
 
     @Resource
     private UserService userService;
-    @Resource
-    private EquipmentBorrowService equipmentBorrowService;
 
     /**
      * 注册用户接口
@@ -163,29 +160,5 @@ public class UserController {
         //3，触发更新
         Integer result = userService.updateUserInfo(updateUserRequest, loginUser);
         return ResultUtils.success(result);
-    }
-
-
-    /**
-     * 删除用户接口
-     * @param deleteRequest
-     * @param request
-     * @return
-     */
-    @PostMapping("/delete")
-    @AuthCheck(mustRole = UserConstant.TEACHER)
-    public BaseResponse<Boolean> deleteUser(@RequestBody DeleteRequest deleteRequest, HttpServletRequest request){
-        if(deleteRequest.getId() <= 0){
-            throw new BusinessException(ErrorCode.PARAMS_NULL_ERROR);
-        }
-        // 判断用户有没有订单
-        User user = userService.getById(deleteRequest.getId());
-        String userAccount = user.getUserAccount();
-        QueryWrapper<EquipmentBorrow> equipmentBorrowQueryWrapper = new QueryWrapper<>();
-        equipmentBorrowQueryWrapper.eq("borrowPersonnelNo", userAccount);
-        List<EquipmentBorrow> list = equipmentBorrowService.list(equipmentBorrowQueryWrapper);
-        ThrowUtils.throwIf(list.size() > 0, ErrorCode.PARAMS_ERROR, "用户还有订单未结束");
-        //这里的删除是逻辑删除
-        return ResultUtils.success(userService.removeById(deleteRequest.getId()));
     }
     }
