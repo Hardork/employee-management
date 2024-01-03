@@ -1,7 +1,11 @@
 package com.work.employee.service;
 
-import com.work.employee.model.domain.entity.LeaveRecord;
+
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.work.employee.model.domain.entity.LeaveRecord;
+import com.work.employee.model.domain.request.employee.LeaveRecordApproveRequest;
+import com.work.employee.model.domain.request.employee.LeaveRecordListRequest;
+import com.work.employee.model.domain.vo.employee.LeaveRecordListVO;
 
 /**
 * @author HWQ
@@ -10,4 +14,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface LeaveRecordService extends IService<LeaveRecord> {
 
+    LeaveRecordListVO getLeaveRecordList(LeaveRecordListRequest leaveRecordListRequest);
+
+    Boolean addLeaveRecord(LeaveRecord leaveRecord);
+
+    Boolean approveLeaveRecord(LeaveRecordApproveRequest leaveRecordApproveRequest);
 }

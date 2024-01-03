@@ -2,6 +2,7 @@ package com.work.employee.service;
 
 import com.work.employee.model.domain.entity.AttendanceRecord;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.work.employee.model.domain.request.employee.AttendanceRecordApprove;
 import com.work.employee.model.domain.request.employee.AttendanceRecordListRequest;
 import com.work.employee.model.domain.vo.employee.AttendanceRecordListVO;
 

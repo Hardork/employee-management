@@ -2,6 +2,7 @@ package com.work.employee.service;
 
 import com.work.employee.model.domain.entity.WorkTicket;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.work.employee.model.domain.request.employee.WorkTicketApproveRequest;
 import com.work.employee.model.domain.request.employee.WorkTicketListRequest;
 import com.work.employee.model.domain.vo.employee.WorkTicketListVO;
 
@@ -13,4 +14,8 @@ import com.work.employee.model.domain.vo.employee.WorkTicketListVO;
 public interface WorkTicketService extends IService<WorkTicket> {
 
     WorkTicketListVO getWorkTicketList(WorkTicketListRequest workTicketListRequest);
+
+    Boolean addWorkTicket(WorkTicket workTicket);
+
+    Boolean approveWorkTicket(WorkTicketApproveRequest workTicketApproveRequest);
 }

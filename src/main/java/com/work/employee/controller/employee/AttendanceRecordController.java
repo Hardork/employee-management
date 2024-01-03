@@ -2,6 +2,7 @@ package com.work.employee.controller.employee;
 
 import com.work.employee.common.BaseResponse;
 import com.work.employee.common.ResultUtils;
+import com.work.employee.model.domain.request.employee.AttendanceRecordApprove;
 import com.work.employee.model.domain.request.employee.AttendanceRecordListRequest;
 import com.work.employee.model.domain.vo.employee.AttendanceRecordListVO;
 import com.work.employee.service.AttendanceRecordService;
@@ -26,4 +27,5 @@ public class AttendanceRecordController {
         AttendanceRecordListVO attendanceRecordListVO = attendanceRecordService.getAttendanceRecordList(attendanceRecordListRequest);
         return ResultUtils.success(attendanceRecordListVO);
     }
+
 }

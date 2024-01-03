@@ -7,6 +7,7 @@ import com.work.employee.common.ErrorCode;
 import com.work.employee.exception.BusinessException;
 import com.work.employee.model.domain.entity.AttendanceRecord;
 import com.work.employee.model.domain.entity.DeptEmpDetail;
+import com.work.employee.model.domain.request.employee.AttendanceRecordApprove;
 import com.work.employee.model.domain.request.employee.AttendanceRecordListRequest;
 import com.work.employee.model.domain.vo.employee.AttendanceRecordListVO;
 import com.work.employee.model.domain.vo.employee.EmployeeListVO;
@@ -77,6 +78,8 @@ public class AttendanceRecordServiceImpl extends ServiceImpl<AttendanceRecordMap
         attendanceRecordListVO.setData(res);
         return attendanceRecordListVO;
     }
+
+
 }
 
 

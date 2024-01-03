@@ -3,12 +3,14 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.work.employee.common.ErrorCode;
 import com.work.employee.exception.BusinessException;
 import com.work.employee.model.domain.entity.DeptEmpDetail;
 import com.work.employee.model.domain.entity.WorkTicket;
+import com.work.employee.model.domain.request.employee.WorkTicketApproveRequest;
 import com.work.employee.model.domain.request.employee.WorkTicketListRequest;
 import com.work.employee.model.domain.vo.employee.*;
 import com.work.employee.service.WorkTicketService;
@@ -71,6 +73,19 @@ public class WorkTicketServiceImpl extends ServiceImpl<WorkTicketMapper, WorkTic
         workTicketListVO.setTotalPage(workTicketByDept.size() / pageSize + 1);
         workTicketListVO.setData(res);
         return workTicketListVO;
+    }
+
+    @Override
+    public Boolean addWorkTicket(WorkTicket workTicket) {
+        return this.save(workTicket);
+    }
+
+    @Override
+    public Boolean approveWorkTicket(WorkTicketApproveRequest workTicketApproveRequest) {
+        UpdateWrapper<WorkTicket> uw = new UpdateWrapper<>();
+        uw.eq("wtID",workTicketApproveRequest.getWtID()).set("approvalStatus"
+                ,workTicketApproveRequest.getApprovalStatus());
+        return this.update(uw);
     }
 }
 
